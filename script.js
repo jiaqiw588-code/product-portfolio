@@ -69,6 +69,18 @@ const share = async event => {
   setTimeout(() => event.currentTarget.textContent = original, 1800);
 };
 document.querySelectorAll(".share").forEach(el => el.addEventListener("click", share));
+document.querySelectorAll(".moment-toggle").forEach(button => button.addEventListener("click", async () => {
+  const video = button.closest(".product-moment").querySelector("video");
+  if (video.paused) {
+    await video.play();
+    button.textContent = "暂停";
+    button.setAttribute("aria-label", "暂停视频");
+  } else {
+    video.pause();
+    button.textContent = "继续";
+    button.setAttribute("aria-label", "继续播放视频");
+  }
+}));
 addEventListener("scroll", () => {
   const height = document.documentElement.scrollHeight - innerHeight;
   document.querySelector(".progress i").style.width = `${height > 0 ? scrollY / height * 100 : 0}%`;
