@@ -20,14 +20,14 @@
       <button class="share" type="button">分享链接 ↗</button>
     </header>
 
-    <section class="hero" id="about">
+    <section class="hero" id="hero">
       <div class="hero-copy">
         <div class="hello"><i></i> HELLO / 你好</div>
         <h1>Hi，<br>我是王佳琦</h1>
         <h2>Product Manager <em>/ 产品经理</em></h2>
         <p>我关注真实业务场景，也在意每一次操作的感受。擅长从复杂流程中找到关键问题，把洞察转化为清晰、可落地的产品方案。</p>
         <ul class="skills"><li>用户研究</li><li>B 端产品</li><li>流程设计</li><li>交互体验</li></ul>
-        <div class="hero-actions"><a href="#work">看看我的作品 <span>↓</span></a><button class="share" type="button">分享作品集</button></div>
+        <div class="hero-actions"><a href="#work">看看我的作品 <span>↓</span></a><a class="resume-button" href="#about">认识我更多</a></div>
       </div>
       <div class="hero-visual">
         <div class="ip-halo"></div><span class="spark s1">✦</span><span class="spark s2">♡</span><span class="spark s3">✧</span>
@@ -38,14 +38,32 @@
       </div>
     </section>
 
+    <section class="profile" id="about" data-reveal>
+      <div class="space-backdrop" aria-hidden="true"><i></i><i></i><i></i></div><span class="space-hint">MOVE TO EXPLORE · 空间漫游</span>
+      <div class="section-intro profile-intro"><span>01 / ABOUT & EXPERIENCE</span><h2>从设计走向产品，<br>始终关注真实的人。</h2><p>城市规划与环境设计训练，让我习惯在系统、场景与人的体验之间寻找平衡。</p></div>
+      <div class="profile-grid">
+        <article class="resume-card"><div class="resume-card-top"><span>WJ</span><small>PRODUCT PROFILE · 2026</small></div><p>我擅长把复杂业务拆解成清晰流程，并用调研、原型与跨团队协作推动方案落地。</p><div class="resume-focus"><b>目前关注</b><span>B 端产品 · SaaS · AI 产品</span></div><div class="resume-actions"><a href="wang-jiaqi-resume.pdf" download>下载完整简历 ↓</a><a href="#work">查看案例 ↗</a></div></article>
+        <div class="profile-stats"><article><strong>9</strong><span>位企业用户<br>深度访谈</span></article><article><strong>40%</strong><span>供应商准入<br>周期缩短</span></article><article><strong>6%</strong><span>Tanda 产品<br>转化率提升</span></article><article><strong>15+</strong><span>页高保真<br>产品原型</span></article></div>
+      </div>
+      <div class="experience-lab">
+        <div class="experience-tabs" role="tablist" aria-label="实习经历">
+          <button class="active" type="button" role="tab" aria-selected="true" data-experience="0"><span>01</span><b>Tanda</b><small>2026.06 - 2026.07</small></button>
+          <button type="button" role="tab" aria-selected="false" data-experience="1"><span>02</span><b>苏宁易购（总部）</b><small>2025.09 - 2025.12</small></button>
+          <button type="button" role="tab" aria-selected="false" data-experience="2"><span>03</span><b>水木莘森景观设计</b><small>2024.01 - 2024.03</small></button>
+        </div>
+        <article class="experience-detail purple" role="tabpanel"><span class="experience-period">2026.06 - 2026.07</span><h3>Tanda</h3><strong>产品经理 · B 端人力 SaaS</strong><p>围绕智能排班、移动考勤与薪资核算，参与从用户调研、竞品分析到功能上线的完整产品迭代。</p><ul><li>访谈 9 位企业 HR 与一线管理者</li><li>输出 PRD、7 页高保真原型及操作手册</li><li>功能上线后产品转化率提升 6%</li></ul></article>
+      </div>
+      <div class="profile-bottom"><div><span>EDUCATION</span><b>昆士兰大学 · 城市规划硕士</b><small>南京艺术学院 · 环境设计本科</small></div><div><span>TOOLKIT</span><ul><li>Figma / Axure</li><li>PRD / 流程图</li><li>SQL</li><li>Codex / AI</li><li>英文业务沟通</li></ul></div></div>
+    </section>
+
     <section class="work" id="work">
       <div class="section-intro"><span>02 / SELECTED WORK</span><h2>我把复杂问题，<br>做成可落地的产品</h2><p>从业务理解、流程梳理到交互方案，记录两次完整的产品思考。</p></div>
       <div class="projects">
-        <article class="project-card">
+        <article class="project-card" data-reveal>
           <button class="project-cover preview" data-project="suning" type="button"><img src="suning-cover.png" alt="苏宁采购管理系统作品集封面"><span>点击在线预览 ↗</span></button>
           <div class="project-copy"><div class="number">01</div><span class="eyebrow">B2B · PROCUREMENT DIGITALIZATION</span><h3>苏宁采购管理系统</h3><strong>让采购过程更透明，协作更顺畅</strong><p>围绕企业采购全流程，梳理供应商、商品、寻源及采购执行等核心场景，把复杂业务规则转化为清晰、可执行的系统体验。</p><ul><li>业务洞察</li><li>流程设计</li><li>B 端产品</li></ul><div class="actions"><button class="preview" data-project="suning" type="button">在线预览 ↗</button><a href="suning-procurement-portfolio.pdf" download>下载 PDF ↓</a></div></div>
         </article>
-        <article class="project-card reverse">
+        <article class="project-card reverse" data-reveal>
           <button class="project-cover preview" data-project="tanda" type="button"><img src="tanda-cover.png" alt="Tanda 产品经理作品集封面"><span>点击在线预览 ↗</span></button>
           <div class="project-copy"><div class="number">02</div><span class="eyebrow">SAAS · WORKFORCE MANAGEMENT</span><h3>Tanda 排班与工时管理</h3><strong>把复杂的人力调度变得直观高效</strong><p>深入管理者与员工的真实工作场景，优化班次创建、人员安排及工时查看流程，降低高频排班操作的认知与执行成本。</p><ul><li>用户研究</li><li>交互设计</li><li>SaaS</li></ul><div class="actions"><button class="preview" data-project="tanda" type="button">在线预览 ↗</button><a href="tanda-product-portfolio.pdf" download>下载 PDF ↓</a></div></div>
         </article>
