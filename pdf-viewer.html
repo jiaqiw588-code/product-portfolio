@@ -21,7 +21,7 @@
     const pages = document.querySelector("#pages");
     const render = async () => {
       if (!file) throw new Error("缺少 PDF 文件地址");
-      const pdf = await pdfjsLib.getDocument(file).promise;
+      const pdf = await pdfjsLib.getDocument({url:file}).promise;
       for (let n=1;n<=pdf.numPages;n++) {
         status.textContent=`正在加载 ${n} / ${pdf.numPages} 页`;
         const page=await pdf.getPage(n),base=page.getViewport({scale:1});
