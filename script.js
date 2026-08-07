@@ -59,7 +59,7 @@ document.querySelectorAll(".experience-tabs button").forEach(button => button.ad
   list.replaceChildren(...item.details.map(detail => { const li = document.createElement("li"); li.textContent = detail; return li; }));
 }));
 
-const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("is-visible"); }), { threshold:.14 });
+const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("is-visible"); }), { threshold:.04 });
 document.querySelectorAll("[data-reveal]").forEach(element => revealObserver.observe(element));
 
 const share = async event => {
@@ -70,7 +70,7 @@ const share = async event => {
 };
 document.querySelectorAll(".share").forEach(el => el.addEventListener("click", share));
 document.querySelectorAll(".moment-toggle").forEach(button => button.addEventListener("click", async () => {
-  const video = button.closest(".product-moment").querySelector("video");
+  const video = button.closest("article").querySelector("video");
   if (video.paused) {
     await video.play();
     button.textContent = "暂停";
