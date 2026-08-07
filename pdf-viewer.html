@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>作品集预览</title>
+  <style>
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#e8e5e5;color:#5f5962;font-family:Arial,"PingFang SC",sans-serif}
+    #status{position:sticky;top:14px;z-index:3;width:max-content;max-width:calc(100% - 28px);margin:14px auto;padding:10px 16px;border:1px solid rgba(255,255,255,.9);border-radius:999px;background:rgba(255,255,255,.86);box-shadow:0 10px 30px rgba(52,44,55,.12);backdrop-filter:blur(12px);font-size:12px;transition:opacity .3s}
+    #pages{width:min(1320px,100%);margin:0 auto;padding:4px 18px 40px;display:grid;gap:18px;justify-items:center}.page{width:100%;display:grid;place-items:center}.page canvas{display:block;max-width:100%;height:auto;background:#fff;box-shadow:0 14px 36px rgba(42,36,44,.18);border-radius:4px}
+    .error{max-width:520px;margin:25vh auto;padding:26px;text-align:center;background:#fff;border-radius:18px}.error a{display:inline-flex;margin-top:13px;padding:10px 16px;color:#fff;background:#29282b;border-radius:10px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div id="status">正在加载作品集…</div><main id="pages"></main>
+  <script type="module">
+    import * as pdfjsLib from "https://mozilla.github.io/pdf.js/build/pdf.mjs";
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://mozilla.github.io/pdf.js/build/pdf.worker.mjs";
+    const file = new URLSearchParams(location.search).get("file");
+    const status = document.querySelector("#status");
+    const pages = document.querySelector("#pages");
+    const render = async () => {
+      if (!file) throw new Error("缺少 PDF 文件地址");
+      const pdf = await pdfjsLib.getDocument(file).promise;
+      for (let n=1;n<=pdf.numPages;n++) {
+        status.textContent=`正在加载 ${n} / ${pdf.numPages} 页`;
+        const page=await pdf.getPage(n),base=page.getViewport({scale:1});
+        const cssWidth=Math.min(1240,Math.max(320,pages.clientWidth-36));
+        const ratio=Math.min(devicePixelRatio||1,1.5),viewport=page.getViewport({scale:cssWidth/base.width*ratio});
+        const holder=document.createElement("section"),canvas=document.createElement("canvas");
+        holder.className="page";canvas.width=Math.floor(viewport.width);canvas.height=Math.floor(viewport.height);canvas.style.width=`${Math.floor(viewport.width/ratio)}px`;canvas.style.height=`${Math.floor(viewport.height/ratio)}px`;holder.append(canvas);pages.append(holder);
+        await page.render({canvasContext:canvas.getContext("2d"),viewport}).promise;
+      }
+      status.textContent=`${pdf.numPages} 页 · 已加载完成`;setTimeout(()=>status.style.opacity=".55",1800);
+    };
+    render().catch(error=>{console.error(error);status.remove();pages.innerHTML=`<div class="error"><strong>作品集暂时无法在线加载</strong><p>你仍然可以在新窗口中打开完整 PDF。</p><a href="${file||'#'}" target="_blank">打开 PDF</a></div>`});
+  </script>
+</body>
+</html>
