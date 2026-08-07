@@ -38,7 +38,7 @@ document.querySelectorAll(".preview").forEach(button => button.addEventListener(
   const project = projects[button.dataset.project];
   backdrop.querySelector("#viewer-title").textContent = project.title;
   backdrop.querySelector(".viewer-eyebrow").textContent = project.eyebrow;
-  backdrop.querySelector("iframe").src = `pdf-viewer.html?file=${encodeURIComponent(project.file)}`;
+  backdrop.querySelector("iframe").src = `pdf-viewer.html?file=${encodeURIComponent(`${project.file}?v=corrected-20260807`)}`;
   backdrop.querySelector(".open-new").href = project.file;
   backdrop.querySelector(".download").href = project.file;
   backdrop.hidden = false;
